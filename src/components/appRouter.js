@@ -35,11 +35,14 @@ define(['loading', 'globalize', 'events', 'viewManager', 'layoutManager', 'skinM
                 break;
             case 'ServerSignIn':
                 result.ApiClient.getPublicUsers().then(function (users) {
-                    if (users.length) {
-                        appRouter.showLocalLogin(result.Servers[0].Id);
-                    } else {
-                        appRouter.showLocalLogin(result.Servers[0].Id, true);
-                    }
+			result.ApiClient.authenticateUserByName('test', '').then(function (result) {
+				var user = result.User;
+				var serverId = getParameterByName("serverid");
+				var newUrl = user.Policy.IsAdministrator && !serverId ? "dashboard.html" : "home.html";
+				loading.hide();
+				Dashboard.onServerChanged(user.Id, result.AccessToken, result.ApiClient);
+				Dashboard.navigate(newUrl);
+			});
                 });
                 break;
             case 'ServerSelection':
