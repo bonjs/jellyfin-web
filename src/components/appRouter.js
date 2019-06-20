@@ -89,6 +89,7 @@ define(['loading', 'globalize', 'events', 'viewManager', 'layoutManager', 'skinM
 
         require(['text!' + url], function (html) {
             loadContent(ctx, route, html, request);
+            window._hmt.push(['_trackPageview', ctx.pathname])
         });
     }
 
