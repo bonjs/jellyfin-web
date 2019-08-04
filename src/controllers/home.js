@@ -50,3 +50,14 @@ define(["tabbedView", "globalize", "require", "emby-tabs", "emby-button", "emby-
         TabbedView.prototype.onResume.call(this, options), document.querySelector(".skinHeader").classList.add("noHomeButtonHeader")
     }, HomeView
 });
+
+
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3a06265f7ffa1db4e4dfc1efccbe3673";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+
